@@ -1,59 +1,66 @@
-// Напиши функцію isEnoughCapacity(products, containerSize), яка обчислює, чи помістяться всі товари в контейнер при пакуванні.
+//^ Напиши стрілочну функцію getUserNames(users), яка прийматиме один параметр users — масив об’єктів користувачів.
+//^ Функція має повертати масив імен усіх користувачів(властивість name) із масиву users.
+//^ Візьми код нижче і встав після оголошення своєї функції для перевірки коректності її роботи.
+//^ У консоль будуть виведені результати її викликів.
+//?====//?====//?=====//?====//?====//?====//?====//?====//?====//?====//?====//?====//?====//?====//?=====
 
-// Функція оголошує два параметри:
+const getUserNames = (users) => { // Cтрілочна функ та метод map - для отримання масиву імен користувачів
+    return users.map(user => user.name);
+}
 
-// products — об’єкт, у якому ключі містять назви товарів, а їхні значення — кількість цих товарів.Наприклад, { apples: 2, grapes: 4 }.
-//     containerSize — число, максимальна кількість одиниць товарів, яку в себе може вмістити контейнер.
-// Функція має повернути результат перевірки, чи помістяться всі товари в контейнер.Тобто порахувати загальну кількість товарів в об’єкті products і повернути true, якщо вона менше або дорівнює containerSize, і false, якщо ні.
+// return users.map(user => user.name);
+// Цей рядок коду використовує метод (map) для створення нового масиву, де кожен елемент є іменем користувача
+// (users.map) викликає функцію, передану для обробки кожного елемента масиву (users.)
+// Стрілочна функція user => user.name приймає кожний об'єкт користувача з масиву (users) і повертає його ім'я(user.name).
+// Таким чином, return users.map(user => user.name); повертає масив імен користувачів.
 
+// Расширенный вариант
 
-// function isEnoughCapacity(products, containerSize) {
-//     // Перебираємо product через ключі об'єкта products за допомогою for...of
-//     for (const productName of Object.keys(products)) {
-//         const productQuantity = products[productName]; //  Отримуємо значення (значення властивості),
-//         // що відповідає ключу productName в об'єкті products
-//         // Якщо кількість товару більша за доступний об'єм контейнера, повертаємо false
-//         if (productQuantity > containerSize) {
-//             return false;
-//         }
+// const getUserNames = users => {
+//     const names = [];
+//     for (const user of users) {
+//         names.push(user.name);
 //     }
-//     // Якщо всі товари поміщаються в контейнер, повертаємо true
-//     return true;
-// }
-
-// якщо писати так,
-// if (productQuantity <= containerSize) {
-//     return true;
-// } return false;
-// то якщо перший товар має кількість, яка не перевищує containerSize,
-//     тоді цей код відразу ж поверне true без перевірки інших товарів.
-// Однак якщо перший товар не вміщується, тоді функція поверне false без перевірки інших товарів.
-// оскільки потрібно перевірити всі товари та повернути true лише тоді,
-//     коли всі товари вміщуються, краще використовувати цикл для перевірки кожного товару
-// та повертати false лише після перевірки всіх товарів.
-
-//     Вариант 2:
-// function isEnoughCapacity(products, containerSize) {
-//     let totalProducts = 0;
-//     for (let product in products) {
-//         totalProducts += products[product];
-//     }
-//     return totalProducts <= containerSize;
-// }
+//     return names;
+// };
 
 
 console.log(
-    isEnoughCapacity({ apples: 2, grapes: 3, carrots: 1 }, 8)
-); // true
-
-console.log(
-    isEnoughCapacity({ apples: 4, grapes: 6, lime: 16 }, 12)
-); // false
-
-console.log(
-    isEnoughCapacity({ apples: 1, lime: 5, tomatoes: 3 }, 14)
-); // true
-
-console.log(
-    isEnoughCapacity({ apples: 18, potatoes: 5, oranges: 2 }, 7)
-); // false
+    getUserNames([
+        {
+            name: "Moore Hensley",
+            email: "moorehensley@indexia.com",
+            balance: 2811
+        },
+        {
+            name: "Sharlene Bush",
+            email: "sharlenebush@tubesys.com",
+            balance: 3821
+        },
+        {
+            name: "Ross Vazquez",
+            email: "rossvazquez@xinware.com",
+            balance: 3793
+        },
+        {
+            name: "Elma Head",
+            email: "elmahead@omatom.com",
+            balance: 2278
+        },
+        {
+            name: "Carey Barr",
+            email: "careybarr@nurali.com",
+            balance: 3951
+        },
+        {
+            name: "Blackburn Dotson",
+            email: "blackburndotson@furnigeer.com",
+            balance: 1498
+        },
+        {
+            name: "Sheree Anthony",
+            email: "shereeanthony@kog.com",
+            balance: 2764
+        },
+    ])
+); // ["Moore Hensley", "Sharlene Bush", "Ross Vazquez", "Elma Head", "Carey Barr", "Blackburn Dotson", "Sheree Anthony"]
